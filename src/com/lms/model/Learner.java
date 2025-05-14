@@ -1,14 +1,14 @@
 package com.lms.model;
 
-public class learner {
+public class Learner {
     private int id;
     private String name;
     private String email;
 
-    public learner(){
+    public Learner(){
 
     }
-    public learner(int id, String name, String email) {
+    public Learner(int id, String name, String email) {
         this.id = id;
         this.name = name;
         this.email = email;
