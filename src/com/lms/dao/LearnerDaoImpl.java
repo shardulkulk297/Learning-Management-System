@@ -7,7 +7,7 @@ import java.util.List;
 public class LearnerDaoImpl implements LearnerDao {
 
     @Override
-    public List<Learner> getAllLearners(){
+    public List<Learner> getAllLearners() {
         return null;
     }
     @Override
