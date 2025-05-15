@@ -22,5 +22,9 @@ public class CourseService {
         return courseDao.getCoursesByTrackId(id);
     }
 
+    public Course getCourseById(int id){
+        return courseDao.getCourseById(id);
+    }
+
 
 }

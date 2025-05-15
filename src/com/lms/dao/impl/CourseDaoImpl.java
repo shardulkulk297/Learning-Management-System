@@ -127,6 +127,37 @@ public class CourseDaoImpl implements CourseDao {
         return courses;
     }
 
+    public Course getCourseById(int id){
+        Course course = null;
+        try{
+            Connection con = DBUtil.getConnection();
+            String sql = "Select * from Course Where id = ?";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next()){
+                course = new Course();
+                course.setId(rs.getInt("id"));
+                course.setTitle(rs.getString("title"));
+                course.setFee(rs.getDouble("fee"));
+                course.setDiscount(rs.getDouble("discount"));
+                course.setPublishDate(LocalDate.parse(rs.getString("publish_date")));
+                TrackService trackService = new TrackService();
+                Track track = trackService.getTrackById(rs.getInt("track_id"));
+                course.setTrack(track);
+                return course;
+            }
+            else{
+                System.out.println("Course not found");
+            }
+
+        }
+        catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return course;
+    }
+
 
 
 }

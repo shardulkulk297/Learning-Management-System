@@ -8,6 +8,7 @@ import com.lms.model.Course;
 import com.lms.model.Learner;
 import com.lms.model.Track;
 import com.lms.service.CourseService;
+import com.lms.service.EnrollService;
 import com.lms.service.LearnerService;
 import com.lms.service.TrackService;
 
@@ -35,6 +36,7 @@ public class App {
             System.out.println("8 Get all Courses");
             System.out.println("9. Get All courses by track id: ");
             System.out.println("10. Get Track by Id");
+            System.out.println("11. Enroll to a course: ");
             System.out.println("0. Exit");
             System.out.println("-----------------------");
             System.out.println( "Enter Choice");
@@ -164,6 +166,25 @@ public class App {
                     }
 
 
+                }
+                case 11->{
+                    System.out.println("Enter Learner Id: ");
+                    int learnerId = sc.nextInt();
+                    CourseService courseService = new CourseService();
+                    List<Course> courses = courseService.getAllCourses();
+                    for(Course course: courses){
+                        System.out.println(course);
+                    }
+                    System.out.println("Enter Course Id for which you want to enroll: ");
+                    int courseId = sc.nextInt();
+                    EnrollService service = new EnrollService();
+                    try{
+                        service.enroll(learnerId, courseId, sc);
+                    }
+                    catch (InvalidIdException e)
+                    {
+                        System.out.println(e.getMessage());
+                    }
                 }
 
                 case 0->{
