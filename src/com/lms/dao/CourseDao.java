@@ -8,5 +8,5 @@ public interface CourseDao {
 
     public void insert(Course course, int trackId);
     public List<Course> getAllCourses();
-    public Course getCourseByTrackId(int trackId);
+    public List<Course> getCoursesByTrackId(int trackId);
 }

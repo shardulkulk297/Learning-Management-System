@@ -4,6 +4,8 @@ import com.lms.dao.TrackDao;
 import com.lms.dao.impl.TrackDaoImpl;
 import com.lms.model.Track;
 
+import java.util.List;
+
 public class TrackService {
 
     TrackDao trackDao = new TrackDaoImpl();
@@ -12,8 +14,11 @@ public class TrackService {
         trackDao.insert(track);
     }
 
-    public Track getAllTracks(){
+    public List<Track> getAllTracks(){
         return trackDao.getAllTracks();
+    }
+    public Track getTrackById(int id){
+        return trackDao.getTrackById(id);
     }
 
 

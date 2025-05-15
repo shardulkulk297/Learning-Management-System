@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TrackDaoImpl implements TrackDao {
 
@@ -36,8 +38,9 @@ public class TrackDaoImpl implements TrackDao {
     }
 
     @Override
-    public Track getAllTracks(){
+    public List<Track> getAllTracks(){
         Track track = null;
+        List<Track> tracks = null;
         boolean flag = false;
         try{
             Connection con = DBUtil.getConnection();
@@ -47,11 +50,12 @@ public class TrackDaoImpl implements TrackDao {
             while(rs.next()){
                 flag = true;
                 track = new Track(rs.getInt("id"), rs.getString("name"));
+                tracks = new ArrayList<>();
+                tracks.add(track);
             }
             if(flag)
             {
                 con.close();
-                return track;
             }
             else{
                 System.out.println("No records Found");
@@ -63,6 +67,33 @@ public class TrackDaoImpl implements TrackDao {
             System.out.println(e.getMessage());
         }
 
+        return tracks;
+    }
+
+    @Override
+    public Track getTrackById(int trackId){
+        Track track = null;
+        try{
+
+            Connection con = DBUtil.getConnection();
+            String sql = "Select * from Track WHERE id = ?";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, trackId);
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next()){
+                track = new Track(trackId, rs.getString("name"));
+                con.close();
+                return track;
+            }
+            else{
+                throw new SQLException("No Records Found");
+            }
+
+        }
+
+        catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
         return track;
     }
 

@@ -1,5 +1,6 @@
 package com.lms.controller;
 
+import com.lms.dao.CourseDao;
 import com.lms.dao.LearnerDao;
 import com.lms.exception.InvalidIdException;
 import com.lms.exception.InvalidInputException;
@@ -11,6 +12,7 @@ import com.lms.service.LearnerService;
 import com.lms.service.TrackService;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -30,6 +32,9 @@ public class App {
             System.out.println("5. Insert Learner");
             System.out.println("6. Insert Track");
             System.out.println("7. Insert Course");
+            System.out.println("8 Get all Courses");
+            System.out.println("9. Get All courses by track id: ");
+            System.out.println("10. Get Track by Id");
             System.out.println("0. Exit");
             System.out.println("-----------------------");
             System.out.println( "Enter Choice");
@@ -131,6 +136,33 @@ public class App {
                     course.setPublishDate(date);
 
                     courseService.insertCourse(course, trackId);
+
+                }
+
+                case 8->{
+                    System.out.println("All Courses: ");
+
+                    CourseService service = new CourseService();
+
+                    List<Course> courses = service.getAllCourses();
+
+                    for(Course course : courses){
+                        System.out.println(course);
+                    }
+
+                }
+
+                case 9->{
+                    System.out.println("Enter TrackId");
+                    int trackId = sc.nextInt();
+                    CourseService service = new CourseService();
+
+                    List<Course> courses = service.getCoursesByTrackId(trackId);
+
+                    for(Course course : courses){
+                        System.out.println(course);
+                    }
+
 
                 }
 
