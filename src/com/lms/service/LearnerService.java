@@ -1,7 +1,7 @@
 package com.lms.service;
 
 import com.lms.dao.LearnerDao;
-import com.lms.dao.LearnerDaoImpl;
+import com.lms.dao.impl.LearnerDaoImpl;
 import com.lms.exception.InvalidIdException;
 import com.lms.exception.InvalidInputException;
 import com.lms.model.Learner;

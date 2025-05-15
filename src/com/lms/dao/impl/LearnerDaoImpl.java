@@ -1,13 +1,12 @@
-package com.lms.dao;
+package com.lms.dao.impl;
 
+import com.lms.dao.LearnerDao;
 import com.lms.exception.InvalidIdException;
 import com.lms.exception.InvalidInputException;
 import com.lms.model.Learner;
 import com.lms.utility.DBUtil;
 import com.lms.utility.LearnerUtility;
-import com.mysql.cj.x.protobuf.MysqlxPrepare;
 
-import javax.xml.transform.Result;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

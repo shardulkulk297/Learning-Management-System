@@ -3,9 +3,14 @@ package com.lms.controller;
 import com.lms.dao.LearnerDao;
 import com.lms.exception.InvalidIdException;
 import com.lms.exception.InvalidInputException;
+import com.lms.model.Course;
 import com.lms.model.Learner;
+import com.lms.model.Track;
+import com.lms.service.CourseService;
 import com.lms.service.LearnerService;
+import com.lms.service.TrackService;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
@@ -23,7 +28,9 @@ public class App {
             System.out.println("3. Delete Learner By Id");
             System.out.println("4. Update Learner");
             System.out.println("5. Insert Learner");
-            System.out.println("6. Exit");
+            System.out.println("6. Insert Track");
+            System.out.println("7. Insert Course");
+            System.out.println("0. Exit");
             System.out.println("-----------------------");
             System.out.println( "Enter Choice");
             int choice = sc.nextInt();
@@ -93,6 +100,41 @@ public class App {
                 }
 
                 case 6->{
+                    sc.nextLine();
+                    System.out.println("Enter Track Name: ");
+                    String TrackName = sc.nextLine();
+                    TrackService service = new TrackService();
+                    Track track = new Track(TrackName);
+                    service.insertTrack(track);
+                }
+
+                case 7->{
+                    sc.nextLine();
+                    System.out.println("Enter course Title: ");
+                    String title = sc.nextLine();
+
+                    System.out.println("Enter course fee: ");
+                    double fee = sc.nextDouble();
+                    System.out.println("Enter course discount: ");
+                    double discount = sc.nextDouble();
+                    sc.nextLine();
+                    System.out.println("Enter course publish date(YYYY-MM-DD): ");
+                    String publishDate = sc.nextLine();
+                    LocalDate date = LocalDate.parse(publishDate);
+                    System.out.println("Enter TrackId: ");
+                    int trackId = sc.nextInt();
+                    CourseService courseService = new CourseService();
+                    Course course = new Course();
+                    course.setTitle(title);
+                    course.setDiscount(discount);
+                    course.setFee(fee);
+                    course.setPublishDate(date);
+
+                    courseService.insertCourse(course, trackId);
+
+                }
+
+                case 0->{
                     System.exit(0);
                     System.out.println("Thanks for Visiting!");
                 }
