@@ -14,6 +14,11 @@ public class Learner {
         this.email = email;
     }
 
+    public Learner(String name, String email) {
+        this.name = name;
+        this.email = email;
+    }
+
     public int getId() {
         return id;
     }

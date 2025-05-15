@@ -31,14 +31,12 @@ public class App {
                 case 1-> {
 
                     List<Learner> learners = learnerService.getAllLearners();
-
                     for (Learner learner : learners) {
                         System.out.println(learner);
                     }
                 }
                 case 2-> {
                     System.out.println("Enter Id");
-
                     int id = sc.nextInt();
                     try {
                         Learner learner = learnerService.getLearnerById(id);
@@ -78,13 +76,11 @@ public class App {
                 }
 
                 case 5->{
-                    System.out.println("Enter Id:");
-                    int id = sc.nextInt();
                     System.out.println("Enter Name");
                     String name = sc.next();
                     System.out.println("Enter Email");
                     String email = sc.next();
-                    Learner learner = new Learner(id, name, email);
+                    Learner learner = new Learner(name, email);
 
                     try{
                         learnerService.insertLearner(learner);
