@@ -4,7 +4,6 @@ import com.lms.dao.UserDao;
 import com.lms.dao.impl.UserDaoImpl;
 import com.lms.exception.UserNotFoundException;
 import com.lms.model.User;
-import com.sun.source.tree.UsesTree;
 
 public class UserService {
 

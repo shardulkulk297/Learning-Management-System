@@ -3,7 +3,6 @@ package com.lms.dao.impl;
 import com.lms.dao.EnrollDao;
 import com.lms.model.Enroll;
 import com.lms.utility.DBUtil;
-import com.mysql.cj.x.protobuf.MysqlxPrepare;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

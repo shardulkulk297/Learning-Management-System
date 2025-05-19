@@ -4,8 +4,6 @@ import com.lms.dao.UserDao;
 import com.lms.exception.UserNotFoundException;
 import com.lms.model.User;
 import com.lms.utility.DBUtil;
-import com.mysql.cj.x.protobuf.MysqlxPrepare;
-import org.w3c.dom.ls.LSOutput;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
