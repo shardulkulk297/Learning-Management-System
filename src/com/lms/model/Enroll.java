@@ -1,5 +1,7 @@
 package com.lms.model;
 
+import com.lms.Enums.Coupon;
+
 import java.time.LocalDate;
 
 public class Enroll {
@@ -8,6 +10,7 @@ public class Enroll {
     private Course course;
     private LocalDate enrollDate;
     private String couponUsed;
+    private Coupon coupon;
     private double feePaid;
 
     public Enroll(){
@@ -50,6 +53,12 @@ public class Enroll {
     }
     public void setFeePaid(double feePaid) {
         this.feePaid = feePaid;
+    }
+    public Coupon getCoupon(){
+        return coupon;
+    }
+    public void setCoupon(){
+        this.coupon = coupon;
     }
 
     @Override

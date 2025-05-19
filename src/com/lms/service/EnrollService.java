@@ -1,5 +1,6 @@
 package com.lms.service;
 
+import com.lms.Enums.Coupon;
 import com.lms.dao.EnrollDao;
 import com.lms.dao.impl.EnrollDaoImpl;
 import com.lms.exception.InvalidIdException;
@@ -30,18 +31,25 @@ public class EnrollService {
         {
             System.out.println("Enter coupon code: ");
             couponCode = sc.next();
+            Coupon coupon = Coupon.valueOf(couponCode); //illegalargument exception
+            double discount = coupon.getDiscount();
+            double feePaid = course.getFee() + (course.getFee() * (discount / 100));
+            double courseDiscount = course.getDiscount() + discount;
+            course.setDiscount(courseDiscount);
+            enroll.setFeePaid(feePaid);
             enroll.setCouponUsed(couponCode);
         }
         else{
             couponCode = null;
             enroll.setCouponUsed(couponCode);
+            enroll.setFeePaid(course.getFee());
         }
 
         EnrollDao enrollDao = new EnrollDaoImpl();
 
         LocalDate date = LocalDate.now();
         enroll.setEnrollDate(date);
-        enroll.setFeePaid(course.getFee());
+
 
         enrollDao.insertEnroll(enroll);
 
